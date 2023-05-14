@@ -23,16 +23,16 @@ namespace BusinessLogic.Services
             this.context = context;
             this.mapper = mapper;
         }
-        public void Create(AdvertDto advertDto)
+        public async void Create(AdvertDto advertDto)
         {
-            context.Adverts.Add(mapper.Map<Advert>(advertDto));
+            await context.Adverts.AddAsync(mapper.Map<Advert>(advertDto));
             context.SaveChanges();
         }
 
         public void Delete(int id)
         {
             var advertDto = GetById(id);
-            context.Adverts.Remove(mapper.Map<Advert>( advertDto));
+           context.Adverts.Remove (mapper.Map<Advert>( advertDto));
             context.SaveChanges();
         }
 
@@ -44,10 +44,10 @@ namespace BusinessLogic.Services
         
         public IEnumerable<AdvertDto> GetAll()
         {
-            var adverts = context.Adverts.Include(x=>x.Category).ToList();
-            return mapper.Map<IEnumerable<AdvertDto>> (adverts);
+            var adverts =  context.Adverts.Include(x=>x.Category).ToList();
+            return  mapper.Map<IEnumerable<AdvertDto>> (adverts);
         }
-
+        
         public AdvertDto? GetById(int id)
         {
             if (id < 0) return null; // Bad Request: 400

@@ -10,7 +10,7 @@ namespace BusinessLogic.Interfaces
 {
     public interface IAdvertService
     {
-        IEnumerable<AdvertDto> GetAll();
+         IEnumerable<AdvertDto> GetAll();
         AdvertDto? GetById(int id);
         void Create(AdvertDto advertDto);
         void Edit(AdvertDto advertDto);
