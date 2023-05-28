@@ -57,7 +57,5 @@ namespace BoardAPI.Controllers
             advertService.Delete(id);
             return Ok();
         }
-
-
     }
 }
